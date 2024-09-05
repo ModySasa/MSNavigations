@@ -16,4 +16,14 @@ public struct NavigationSizes {
     public let backBarPaddingBottom: CGFloat
     public let backBarPaddingLeading: CGFloat
     public let appBarHeight: CGFloat
+    
+    public init(header: CGFloat, headerLineSpacing: CGFloat, headerMonoSpacing: CGFloat, mainMarginTop: CGFloat, backBarPaddingBottom: CGFloat, backBarPaddingLeading: CGFloat, appBarHeight: CGFloat) {
+        self.header = header
+        self.headerLineSpacing = headerLineSpacing
+        self.headerMonoSpacing = headerMonoSpacing
+        self.mainMarginTop = mainMarginTop
+        self.backBarPaddingBottom = backBarPaddingBottom
+        self.backBarPaddingLeading = backBarPaddingLeading
+        self.appBarHeight = appBarHeight
+    }
 }

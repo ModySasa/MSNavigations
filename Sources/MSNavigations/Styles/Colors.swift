@@ -10,4 +10,9 @@ import SwiftUI
 public struct NavigationColors {
     public let backgroundColor: Color
     public let barTextColor: Color
+    
+    public init(backgroundColor: Color, barTextColor: Color) {
+        self.backgroundColor = backgroundColor
+        self.barTextColor = barTextColor
+    }
 }
