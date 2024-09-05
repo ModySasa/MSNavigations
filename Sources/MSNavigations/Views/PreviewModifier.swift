@@ -11,7 +11,12 @@ struct PreviewModifier: ViewModifier {
     func body(content: Content) -> some View {
         content
             .onAppear {
-                let initialColors = NavigationColors(backgroundColor: .cyan , barTextColor: .black )
+                let initialColors = NavigationColors(
+                    backgroundColor: .cyan
+                    , barTextColor: .black
+                    , btmNavSelectedTextColor: .gray
+                    , btmNavUnSelectedTextColor: .black
+                )
                 let initialSizes = NavigationSizes(
                     header: 20
                     , headerLineSpacing: 15
@@ -20,7 +25,11 @@ struct PreviewModifier: ViewModifier {
                     , backBarPaddingBottom: 20
                     , backBarPaddingLeading: 20
                     , appBarHeight: 100
+                    , tabBarHeight: 100
+                    , tabBarHorizontalPadding: 10
+                    , tabBarBottomPadding: 10
                 )
+                
                 MSNavigations.initialize(colors: initialColors , sizees: initialSizes)
             }
     }

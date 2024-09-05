@@ -16,14 +16,27 @@ public struct NavigationSizes {
     public let backBarPaddingBottom: CGFloat
     public let backBarPaddingLeading: CGFloat
     public let appBarHeight: CGFloat
+
+    public let tabBarHeight: CGFloat
+    public let tabBarHorizontalPadding: CGFloat
+    public let tabBarBottomPadding: CGFloat
     
-    public init(header: CGFloat, headerLineSpacing: CGFloat, headerMonoSpacing: CGFloat, mainMarginTop: CGFloat, backBarPaddingBottom: CGFloat, backBarPaddingLeading: CGFloat, appBarHeight: CGFloat) {
+    public init(
+        header: CGFloat, headerLineSpacing: CGFloat, headerMonoSpacing: CGFloat
+        , mainMarginTop: CGFloat, backBarPaddingBottom: CGFloat, backBarPaddingLeading: CGFloat, appBarHeight: CGFloat
+        , tabBarHeight:CGFloat , tabBarHorizontalPadding: CGFloat , tabBarBottomPadding: CGFloat
+    ) {
         self.header = header
         self.headerLineSpacing = headerLineSpacing
         self.headerMonoSpacing = headerMonoSpacing
+        
         self.mainMarginTop = mainMarginTop
         self.backBarPaddingBottom = backBarPaddingBottom
         self.backBarPaddingLeading = backBarPaddingLeading
         self.appBarHeight = appBarHeight
+        
+        self.tabBarHeight = tabBarHeight
+        self.tabBarHorizontalPadding = tabBarHorizontalPadding
+        self.tabBarBottomPadding = tabBarBottomPadding
     }
 }
