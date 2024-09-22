@@ -5,6 +5,7 @@
 //  Created by Moha on 9/5/24.
 //
 
+import SwiftUI
 
 public class MSNavigations {
     public let colors: NavigationColors
@@ -36,5 +37,14 @@ public class MSNavigations {
             fatalError("MSNavigations has not been initialized. Call initialize(colors:) first.")
         }
         return instance
+    }
+    
+    public static var hasTopNotch: Bool {
+        let keyWindow = UIApplication.shared.connectedScenes
+            .compactMap { $0 as? UIWindowScene }
+            .flatMap { $0.windows }
+            .first { $0.isKeyWindow }
+        
+        return keyWindow?.safeAreaInsets.top ?? 0 > 20
     }
 }
