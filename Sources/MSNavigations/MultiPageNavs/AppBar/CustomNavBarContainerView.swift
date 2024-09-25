@@ -10,7 +10,7 @@ import SwiftUI
 
 public struct CustomNavBarContainerView<Content:View , TextStyleModifier : ViewModifier>: View {
     let content : Content
-    let textStyleModifier : TextStyleModifier
+    let textStyleModifier : TextStyleModifier?
     @State var pageTitle : String = ""
     @State var hasBackButton : Bool = true
     @State var hasAppBar : Bool = true
@@ -51,7 +51,7 @@ public struct CustomNavBarContainerView<Content:View , TextStyleModifier : ViewM
     
     public init(
         _ backgroundColor : Color = MSNavigations.shared.colors.backgroundColor
-        , textStyleModifier : TextStyleModifier
+        , textStyleModifier : TextStyleModifier? = nil
         , @ViewBuilder content: ()-> Content) {
         self.content = content()
         self.backgroundColor = backgroundColor

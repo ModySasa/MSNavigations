@@ -40,7 +40,7 @@ public struct CustomAppBar<
     var titleStyle : AppBarTitleStyle = .Center
     let pageTitle : String
     let hasBackButton : Bool
-    let textStyleModifier : TextStyleModifier
+    let textStyleModifier : TextStyleModifier?
     
     init(
         pageTitle:String ,
@@ -53,7 +53,7 @@ public struct CustomAppBar<
         hasLeadingViewSecond : Bool = false,
         hasTrailingViewFirst : Bool = false,
         hasTrailingViewSecond : Bool = false,
-        textStyleModifier : TextStyleModifier,
+        textStyleModifier : TextStyleModifier? = nil,
         @ViewBuilder background : ()->Content,
         @ViewBuilder backButtonView : ()->BackButtonView,
         @ViewBuilder leadingViewFirst : ()->LeadingFirstView,
@@ -110,9 +110,14 @@ public struct CustomAppBar<
     }
     
     @ViewBuilder var title : some View {
-        Text(pageTitle)
-            .foregroundColor(titleColor)
-            .modifier(textStyleModifier)
+        if let textStyleModifier = textStyleModifier {
+            Text(pageTitle)
+                .foregroundColor(titleColor)
+                .modifier(textStyleModifier)
+        } else {
+            Text(pageTitle)
+                .foregroundColor(titleColor)
+        }
     }
     
     @ViewBuilder var backButton : some View {
