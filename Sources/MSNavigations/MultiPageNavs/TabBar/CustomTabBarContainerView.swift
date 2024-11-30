@@ -64,7 +64,7 @@ public struct CustomTabBarContainerView<Background:View>: View {
                 .onPreferenceChange(HasTabBarViewPreferenceKey.self) { value in
                     self.hasTabBar = value
                 }
-            if(hasTabBar) {
+            if(tabs[selection].hasTabBar) {
                 VStack(spacing:0) {
                     Spacer()
                     CustomTabBarView(
