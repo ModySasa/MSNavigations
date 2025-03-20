@@ -38,10 +38,12 @@ public struct CustomNavStack15<Destination : View , Content:View>: View {
                             }
                         , tag: stacksViewModel.lastItemTag ?? "", selection: $stacksViewModel.lastItemTag) { EmptyView() }
                 }
-                content
-                    .ignoresSafeArea()
-                    .navigationBarHidden(true)
-                    .navigationViewStyle(.stack)
+                CustomNavBarContainerView(backgroundColor , textStyleModifier: TextMod()) {
+                    content
+                        .ignoresSafeArea()
+                        .navigationBarHidden(true)
+                        .navigationViewStyle(.stack)
+                }
             }
         }
     }
