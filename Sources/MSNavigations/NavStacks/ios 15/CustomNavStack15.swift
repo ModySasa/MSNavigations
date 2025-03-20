@@ -27,18 +27,18 @@ public struct CustomNavStack15<Destination : View , Content:View>: View {
     
     public var body: some View {
         NavigationView {
-            ZStack{
-                if(stacksViewModel.lastItem != nil){
-                    NavigationLink(
-                        destination:
-                            CustomNavBarContainerView(backgroundColor , textStyleModifier: TextMod()) {
+            CustomNavBarContainerView(backgroundColor , textStyleModifier: UndoPaddingMod()) {
+                ZStack{
+                    if(stacksViewModel.lastItem != nil){
+                        NavigationLink(
+                            destination:
                                 destination
-                                    .ignoresSafeArea()
-                                    .navigationBarHidden(true)
-                            }
-                        , tag: stacksViewModel.lastItemTag ?? "", selection: $stacksViewModel.lastItemTag) { EmptyView() }
-                }
-                CustomNavBarContainerView(backgroundColor , textStyleModifier: TextMod()) {
+                                .ignoresSafeArea()
+                                .navigationBarHidden(true)
+                                .navigationViewStyle(.stack)
+                            
+                            , tag: stacksViewModel.lastItemTag ?? "", selection: $stacksViewModel.lastItemTag) { EmptyView() }
+                    }
                     content
                         .ignoresSafeArea()
                         .navigationBarHidden(true)
@@ -52,5 +52,12 @@ public struct CustomNavStack15<Destination : View , Content:View>: View {
 struct TextMod : ViewModifier {
     func body(content: Content) -> some View {
         content.font(.title)
+    }
+}
+
+struct UndoPaddingMod: ViewModifier {
+    public func body(content:Content) -> some View {
+        content
+            .padding(-10)
     }
 }
