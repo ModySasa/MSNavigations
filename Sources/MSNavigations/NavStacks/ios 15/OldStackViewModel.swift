@@ -13,7 +13,7 @@ public class OldStackViewModel : ObservableObject  {
     public init() {
     }
     
-    @Published public var stacks : [Any?]? = nil
+    @Published public var stacks : [(Any? , String)]? = nil
     @Published public var lastItem : Any? = nil
     @Published public var lastItemTag : String? = nil
     
@@ -36,7 +36,9 @@ public class OldStackViewModel : ObservableObject  {
         if stacks != nil {
             if stacks!.count > 1 {
                 stacks!.removeLast()
-                self.lastItem = stacks!.last as Any?
+                self.lastItem = (stacks!.last)!.0 as Any?
+                self.lastItemTag = (stacks!.last)!.1
+                print("stacksCount : " , stacks!.count)
             }
         }
     }
