@@ -42,6 +42,7 @@ public struct CustomAppBar<
     let hasBackButton : Bool
     let textStyleModifier : TextStyleModifier?
     
+    var onDismiss : (()-> Void)?
     init(
         pageTitle:String ,
         titleStyle : AppBarTitleStyle = .Center,
@@ -59,7 +60,8 @@ public struct CustomAppBar<
         @ViewBuilder leadingViewFirst : ()->LeadingFirstView,
         @ViewBuilder leadingViewSecond : ()->LeadingSecondView,
         @ViewBuilder trailingViewFirst : ()->TrailingFirstView,
-        @ViewBuilder trailingViewSecond : ()->TrailingSecondView
+        @ViewBuilder trailingViewSecond : ()->TrailingSecondView,
+        onDismiss : (()-> Void)? = nil
     ) {
         self.titleColor = titleColor
         self.pageTitle = pageTitle
@@ -80,6 +82,8 @@ public struct CustomAppBar<
         self.leadingViewSecond = leadingViewSecond()
         self.trailingViewFirst = trailingViewFirst()
         self.trailingViewSecond = trailingViewSecond()
+        
+        self.onDismiss = onDismiss
     }
     
     public var body: some View {
@@ -124,7 +128,13 @@ public struct CustomAppBar<
         if(hasBackButton){
             Button {
                 withAnimation(.easeOut) {
+                    if #available(iOS 16.0, *) {
                         dismiss()
+                    } else {
+                        if let onDismiss {
+                            onDismiss()
+                        }
+                    }
                 }
             } label: {
                 backButtonView

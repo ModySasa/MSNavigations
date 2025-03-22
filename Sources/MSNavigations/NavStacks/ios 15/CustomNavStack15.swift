@@ -44,6 +44,8 @@ public struct CustomNavStack15<Destination : View , Content:View>: View {
                         .navigationBarHidden(true)
                         .navigationViewStyle(.stack)
                 }
+            } onDismiss: {
+                stacksViewModel.dismiss()
             }
         }
     }

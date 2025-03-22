@@ -13,6 +13,7 @@ public class OldStackViewModel : ObservableObject  {
     public init() {
     }
     
+    @Published public var stacks : [Any?]? = nil
     @Published public var lastItem : Any? = nil
     @Published public var lastItemTag : String? = nil
     
@@ -29,5 +30,14 @@ public class OldStackViewModel : ObservableObject  {
 //        if let shouldRestore {
 //            viewModel?.shouldRestore = shouldRestore
 //        }
+    }
+    
+    func dismiss(){
+        if stacks != nil {
+            if stacks!.count > 1 {
+                stacks!.removeLast()
+                self.lastItem = stacks!.last as Any?
+            }
+        }
     }
 }

@@ -48,14 +48,18 @@ public struct CustomNavBarContainerView<Content:View , TextStyleModifier : ViewM
 
     @State var toastView : ToastViewEquatableViewContainer = ToastViewEquatableViewContainer(view: AnyView(EmptyView()))
     
+    var onDismiss : (()-> Void)?
     
     public init(
-        _ backgroundColor : Color = MSNavigations.shared.colors.backgroundColor
-        , textStyleModifier : TextStyleModifier? = nil
-        , @ViewBuilder content: ()-> Content) {
+        _ backgroundColor : Color = MSNavigations.shared.colors.backgroundColor ,
+        textStyleModifier : TextStyleModifier? = nil ,
+        @ViewBuilder content: ()-> Content,
+        onDismiss : (()-> Void)? = nil
+    ) {
         self.content = content()
         self.backgroundColor = backgroundColor
         self.textStyleModifier = textStyleModifier
+        self.onDismiss = onDismiss
     }
     
     public var body: some View {
@@ -86,6 +90,10 @@ public struct CustomNavBarContainerView<Content:View , TextStyleModifier : ViewM
                         appBarTrailingFirstView.view
                     } trailingViewSecond: {
                         appBarTrailingSecondView.view
+                    } onDismiss : {
+                        if let onDismiss {
+                            onDismiss()
+                        }
                     }
                 }
                 content
