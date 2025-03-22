@@ -32,7 +32,7 @@ public class OldStackViewModel : ObservableObject  {
 //        }
     }
     
-    func dismiss(){
+    public func dismiss(){
         if stacks != nil {
             if stacks!.count > 1 {
                 stacks!.removeLast()
