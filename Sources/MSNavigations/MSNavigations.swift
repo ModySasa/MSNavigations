@@ -11,24 +11,26 @@ public class MSNavigations {
     public let colors: NavigationColors
     public let sizes: NavigationSizes
     public let shouldSwipeBack: Bool
+    public let viewsToSwibe: Int
     
     // Private initializer to prevent direct instantiation
-    private init(colors: NavigationColors , sizes : NavigationSizes , shouldSwipeBack : Bool = true) {
+    private init(colors: NavigationColors , sizes : NavigationSizes , shouldSwipeBack : Bool = true , viewsToSwibe : Int = 1) {
         self.colors = colors
         self.sizes = sizes
         self.shouldSwipeBack = shouldSwipeBack
+        self.viewsToSwibe = viewsToSwibe
     }
     
     // Static property to hold the singleton instance
     private static var instance: MSNavigations?
     
     // Method to initialize the singleton instance
-    public static func initialize(colors: NavigationColors , sizees : NavigationSizes , shouldSwipeBack : Bool = true) {
+    public static func initialize(colors: NavigationColors , sizees : NavigationSizes , shouldSwipeBack : Bool = true , viewsToSwibe : Int = 1) {
         guard instance == nil else {
             fatalError("MSNavigations has already been initialized.")
             return
         }
-        instance = MSNavigations(colors: colors , sizes: sizees , shouldSwipeBack: shouldSwipeBack)
+        instance = MSNavigations(colors: colors , sizes: sizees , shouldSwipeBack: shouldSwipeBack , viewsToSwibe : viewsToSwibe)
     }
     
     // Accessor to retrieve the singleton instance
