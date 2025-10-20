@@ -54,7 +54,7 @@ public struct CustomTabBarContainerView<Background:View>: View {
         ZStack {
             tabs[selection].content
                 .ignoresSafeArea()
-                .padding(.bottom, pageBottomPadding)
+                .padding(.bottom, tabs[selection].hasTabBar ? pageBottomPadding : 0)
                 .onPreferenceChange(TabBarHasDialogBarPrefKey.self) { val in
                     self.showDialog = val
                 }
