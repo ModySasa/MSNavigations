@@ -37,3 +37,22 @@ public extension View {
         modifier(DialogContainerView(showDialog: showDialog, dialogView: dialogView))
     }
 }
+
+public class DialogManager : ObservableObject {
+    @Published public var showDialog = false
+    @Published public var dialogView : AnyView = AnyView(EmptyView())
+    
+    public init(){
+        
+    }
+    
+    public func show<V:View>(dialogView: ()->V) {
+        showDialog = true
+        self.dialogView = AnyView(dialogView())
+    }
+    
+    public func hide(){
+        showDialog = false
+        self.dialogView = AnyView(EmptyView())
+    }
+}
