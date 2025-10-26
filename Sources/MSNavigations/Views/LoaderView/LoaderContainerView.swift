@@ -50,9 +50,11 @@ public class LoaderManager {
         self.loadingView = loadingView
     }
     
-    public func startLoading<V:View>(loadingView: ()->V) {
+    public func startLoading<V:View>(loadingView: (()->V)? = nil ) {
         isLoading = true
-        self.loadingView = AnyView(loadingView())
+        if let loadingView = loadingView {
+            self.loadingView = AnyView(loadingView())
+        }
     }
     
     public func stopLoading(){
