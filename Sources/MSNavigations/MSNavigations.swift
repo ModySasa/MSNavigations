@@ -57,7 +57,7 @@ public class MSNavigations {
     public static var topNotchType : TopNotchType {
         return switch topNotch {
         case 21...47: .notch
-        case 48...59: .dynamicIsland
+        case 48...70: .dynamicIsland
         default: .non
         }
     }
