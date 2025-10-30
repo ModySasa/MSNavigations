@@ -42,11 +42,23 @@ public class MSNavigations {
     }
     
     public static var hasTopNotch: Bool {
+        return topNotch > 20
+    }
+    
+    public static var topNotch: CGFloat {
         let keyWindow = UIApplication.shared.connectedScenes
             .compactMap { $0 as? UIWindowScene }
             .flatMap { $0.windows }
             .first { $0.isKeyWindow }
         
-        return keyWindow?.safeAreaInsets.top ?? 0 > 20
+        return keyWindow?.safeAreaInsets.top ?? 0
+    }
+    
+    public static var topNotchType : TopNotchType {
+        return switch topNotch {
+        case 21...47: .notch
+        case 48...59: .dynamicIsland
+        default: .non
+        }
     }
 }
