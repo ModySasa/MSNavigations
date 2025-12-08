@@ -22,7 +22,6 @@ public struct CustomTabBarView<Background:View>: View {
         @ViewBuilder background: ()-> Background
     ) {
         self.tabs = tabs
-        print(self.tabs)
         self._selection = selection
         self.tabView = tabView
         self.background = background()
