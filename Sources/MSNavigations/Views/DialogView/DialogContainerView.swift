@@ -79,3 +79,30 @@ public class ObservableDialogManager : ObservableObject {
         self.dialogView = AnyView(EmptyView())
     }
 }
+
+@available(iOS 17.0, *)
+@Observable
+public class MultiDialogManager {
+    public var showDialog = false
+    public var dialogView : [AnyView] = []
+    
+    public init(showDialog: Bool = false, dialogView: [AnyView] = []) {
+        self.showDialog = showDialog
+        self.dialogView = dialogView
+    }
+    
+    public func show<V:View>(dialogView: ()->V) {
+        showDialog = true
+        self.dialogView.append(AnyView(dialogView()))
+    }
+    
+    public func hide(){
+        showDialog = false
+        self.dialogView = []
+    }
+    
+    public func showLast() {
+        guard self.dialogView.count > 0 else { return }
+        self.dialogView.removeLast()
+    }
+}
