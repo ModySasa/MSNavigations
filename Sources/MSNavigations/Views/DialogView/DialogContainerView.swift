@@ -36,6 +36,13 @@ public extension View {
     ) -> some View {
         modifier(DialogContainerView(showDialog: showDialog, dialogView: dialogView))
     }
+
+    func multiDialogContainer<Dialog: View>(
+        showDialog: Binding<Bool>,
+        @ViewBuilder dialogView: @escaping () -> Dialog
+    ) -> some View {
+        modifier(DialogContainerView(showDialog: showDialog, dialogView: dialogView))
+    }
 }
 
 @available(iOS 17.0, *)
